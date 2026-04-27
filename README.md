@@ -4,7 +4,7 @@ A Next.js clone of [enterprise.accredian.com](https://enterprise.accredian.com) 
 
 ## Live Demo
 
-[View Live Site](YOUR_VERCEL_URL)
+[View Live Site](https://accredian-enterprise-murex.vercel.app)
 
 ## GitHub Repository
 
