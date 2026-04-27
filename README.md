@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Accredian Enterprise Clone
 
-## Getting Started
+A Next.js clone of [enterprise.accredian.com](https://enterprise.accredian.com) built for a Full Stack Developer internship assignment.
 
-First, run the development server:
+## Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[View Live Site](YOUR_VERCEL_URL)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## GitHub Repository
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[https://github.com/arnavvsharmaaa/accredian-enterprise](https://github.com/arnavvsharmaaa/accredian-enterprise)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech Stack
 
-## Learn More
+| Technology | Purpose |
+|---|---|
+| Next.js 14 (App Router) | React framework with file-based routing |
+| Tailwind CSS | Utility-first responsive styling |
+| JavaScript (ES6+) | Component logic and interactivity |
+| Vercel | Deployment and hosting |
 
-To learn more about Next.js, take a look at the following resources:
+## Setup Instructions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/arnavvsharmaaa/accredian-enterprise.git
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Navigate to project folder**
+   ```bash
+   cd accredian-enterprise
+   ```
 
-## Deploy on Vercel
+3. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Run development server**
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Approach Taken
+
+- Built each section as an **independent reusable component** under `/components`
+- Used **Next.js App Router** for modern routing structure (`app/page.js`)
+- **Tailwind CSS** for responsive mobile-first styling throughout
+- All repeated data stored in **arrays and mapped** to avoid hardcoded repetition
+- **Custom smooth scroll navigation** with `requestAnimationFrame` + `easeInOutCubic` easing — accounts for sticky navbar offset
+- **Lead capture form** with client-side validation and a Next.js API route handler (`/api/contact`)
+- **Animated statistics counter** using `IntersectionObserver` — counts up only when section enters the viewport
+- **Horizontal timeline** layout for the AccredianEdge section with mobile horizontal scroll
+
+## Components Built
+
+| Component | Description |
+|---|---|
+| `Navbar` | Sticky with custom smooth scroll + mobile hamburger menu |
+| `Hero` | Two-column layout with corporate image and CTA |
+| `Stats` | Animated counter triggered on scroll into view |
+| `Partnerships` | Company logo/name badges grid |
+| `AccredianEdge` | Horizontal alternating timeline with dashed connectors |
+| `DomainExpertise` | Responsive card grid with icons |
+| `CourseSegmentation` | Colored 2×2 category grid |
+| `WhoShouldJoin` | Blue background section with audience cards |
+| `CATFramework` | Three connected circles (Concept → Application → Tools) |
+| `HowWeDeliver` | Numbered 3-step process cards |
+| `FAQ` | Tabbed accordion with 3 content categories |
+| `Testimonials` | Partner quote cards with company badges |
+| `LeadForm` | Validated form wired to `/api/contact` |
+| `CTABanner` | Full-width blue call-to-action strip |
+| `Footer` | Multi-column with real social and page links |
+
+## API Integration
+
+`POST /api/contact` — handles lead form submissions
+
+- Parses JSON request body
+- Validates required fields: `name`, `company`, `email`, `phone`, `teamSize`
+- Validates email format via regex
+- Returns `400` with `missingFields` array if validation fails
+- Returns `200` with `{ success: true, data: { ... } }` on success
+- Logs each submission to the server console with a timestamp
+
+## AI Usage
+
+- **Claude AI** — Project planning, blueprint creation, section-by-section prompt writing, and debugging guidance
+- **Antigravity IDE** — Code generation for all components based on structured prompts
+- **Manual work** — Reviewing all generated code, testing each component, fixing bugs, adjusting styling, connecting components, and deployment configuration
+
+## Improvements With More Time
+
+- Add a database (MongoDB / PostgreSQL) to persist form submissions
+- Add email notifications on form submit using Nodemailer or SendGrid
+- Add scroll-triggered entrance animations using Framer Motion
+- Improve mobile responsive design across all sections
+- Replace text badge logos with real company SVG logos
+- Add more interactive elements to closer match the original site
+- Add unit and integration tests for components
+- Migrate to TypeScript for better type safety
